@@ -26,6 +26,12 @@ export class TodoService {
     this.todoList[index].completed = !this.todoList[index].completed;
   }
 
+  clearCompleted() {
+    this.todoList = this.todoList.filter((todo) => {
+      return todo.completed === false;
+    });
+  }
+
   // filterTodoList(filterBy) {
   //   if (filterBy !== null) {
   //     return this.todoList.filter((todo) => {

@@ -28,8 +28,9 @@ export class TodoListComponent implements OnInit {
     }
   }
 
-  removeTodo(index) {
-    this._todoService.removeTodo(index);
+  removeTodo(index, indexInList?) {
+    const i = indexInList ? indexInList : index;
+    this._todoService.removeTodo(i);
   }
 
   changeTodoState(index, indexInList?) {
@@ -40,6 +41,11 @@ export class TodoListComponent implements OnInit {
 
   changeFilter(newFilter) {
     this.filterBy = newFilter;
+  }
+
+  clearCompleted() {
+    this._todoService.clearCompleted();
+    this.todoList = this._todoService.todoList;
   }
 
   // changeFilterThroughService(newFilter) {

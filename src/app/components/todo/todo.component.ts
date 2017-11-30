@@ -18,7 +18,7 @@ export class TodoComponent implements OnInit {
   }
 
   remove() {
-    this.onRemove.emit();
+    this.onRemove.emit(this.todo.indexInList);
   }
 
   changeState() {
