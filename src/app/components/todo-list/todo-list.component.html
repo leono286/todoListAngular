@@ -4,12 +4,30 @@
   <div class="input-container">
     <input type="text" [(ngModel)]="newTodoText" (keyup.enter)="addTodo()" placeholder="What needs to be done?">
   </div>
+  <!-- <h2>Pipe</h2> -->
   <div class="todo-list-container">
-    <app-todo *ngFor="let todo of this.todoList | state:filterBy; let i = index" [todo]="todo" (onRemove)="removeTodo(i)" (onStateChange)="changeTodoState(i)"></app-todo>
+    <app-todo *ngFor="let todo of todoList | state:filterBy; let i = index" [todo]="todo" (onRemove)="removeTodo($event)" (onStateChange)="changeTodoState(i, $event)">
+    </app-todo>
+    <!-- <h2>service</h2>
+    <app-todo *ngFor="let todo of todoList; let i = index" [todo]="todo" (onRemove)="removeTodo(i)" (onStateChange)="changeTodoState(i)"></app-todo> -->
   </div>
-  <div class="actions text-center" *ngIf="this.todoList.length > 0">
-    <button class="btn btn-outline-secondary btn-sm" (click)="changeFilter(null)">All</button>
-    <button class="btn btn-outline-secondary btn-sm" (click)="changeFilter(false)">Active</button>
-    <button class="btn btn-outline-secondary btn-sm" (click)="changeFilter(true)">Completed</button>
+  <div class="actions text-center" *ngIf="todoList.length > 0">
+    <button class="btn btn-sm" [class.btn-outline-secondary]="filterBy != null" [class.btn-secondary]="filterBy == null" (click)="changeFilter(null)">
+      All
+    </button>
+    <button class="btn btn-sm" [class.btn-outline-secondary]="filterBy != false" [class.btn-secondary]="filterBy == false" (click)="changeFilter(false)">
+      Active
+    </button>
+    <button class="btn btn-sm" [class.btn-outline-secondary]="filterBy != true" [class.btn-secondary]="filterBy == true" (click)="changeFilter(true)">
+      Completed
+    </button>
   </div>
+
+  <!-- <div class="actions text-center">
+    <button class="btn btn-secondary btn-sm" (click)="changeFilterThroughService(null)">All</button>
+    <button class="btn btn-secondary btn-sm" (click)="changeFilterThroughService(false)">Active</button>
+    <button class="btn btn-secondary btn-sm" (click)="changeFilterThroughService(true)">Completed</button>
+  </div> -->
+
+  <!-- {{(todoList | state:false).length}} -->
 </div>

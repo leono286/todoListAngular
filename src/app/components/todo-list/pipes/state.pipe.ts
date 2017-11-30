@@ -2,18 +2,20 @@ import { Todo } from './../../todo.interface';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'state'
+  name: 'state',
+  pure: false
 })
 export class StatePipe implements PipeTransform {
-
   transform(value: Todo[], state?: boolean): Todo[] {
-
-    console.log(typeof (state));
-
     if (typeof state === 'boolean') {
-      return value.filter((todo) => {
-        return todo.completed === state;
+      const filteredList: Todo[] = [];
+      value.forEach((todo, index) => {
+        if (todo.completed === state) {
+          todo['indexInList'] = index;
+          filteredList.push(todo);
+        }
       });
+      return filteredList;
     } else {
       return value;
     }

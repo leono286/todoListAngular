@@ -22,7 +22,7 @@ export class TodoComponent implements OnInit {
   }
 
   changeState() {
-    this.onStateChange.emit();
+    this.onStateChange.emit(this.todo.indexInList);
   }
 
 }

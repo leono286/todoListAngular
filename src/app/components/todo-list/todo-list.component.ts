@@ -12,18 +12,17 @@ export class TodoListComponent implements OnInit {
   todoList: Todo[];
   newTodoText = '';
   filterBy: any = null;
+  currentFilter: any = null;
 
   constructor(private _todoService: TodoService) {
     this.todoList = _todoService.todoList;
   }
 
   ngOnInit() {
-
   }
 
   addTodo() {
     if (this.newTodoText.length > 0) {
-      console.log(this.newTodoText);
       this._todoService.addTodo(this.newTodoText);
       this.newTodoText = '';
     }
@@ -33,11 +32,20 @@ export class TodoListComponent implements OnInit {
     this._todoService.removeTodo(index);
   }
 
-  changeTodoState(index) {
-    this._todoService.changeTodoState(index);
+  changeTodoState(index, indexInList?) {
+    const i = indexInList ? indexInList : index;
+    this._todoService.changeTodoState(i);
+    // this.changeFilterThroughService(this.currentFilter);
   }
 
   changeFilter(newFilter) {
     this.filterBy = newFilter;
   }
+
+  // changeFilterThroughService(newFilter) {
+  //   if (newFilter !== this.currentFilter) {
+  //     this.currentFilter = newFilter;
+  //   }
+  //   this.todoList = this._todoService.filterTodoList(this.currentFilter);
+  // }
 }
