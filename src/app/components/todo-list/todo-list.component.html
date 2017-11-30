@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>todos</h1>
+
+  <div class="input-container">
+    <input type="text" [(ngModel)]="newTodoText" (keyup.enter)="addTodo()" placeholder="What needs to be done?">
+  </div>
+  <div class="todo-list-container">
+    <app-todo *ngFor="let todo of this.todoList | state:filterBy; let i = index" [todo]="todo" (onRemove)="removeTodo(i)" (onStateChange)="changeTodoState(i)"></app-todo>
+  </div>
+  <div class="actions text-center" *ngIf="this.todoList.length > 0">
+    <button class="btn btn-outline-secondary btn-sm" (click)="changeFilter(null)">All</button>
+    <button class="btn btn-outline-secondary btn-sm" (click)="changeFilter(false)">Active</button>
+    <button class="btn btn-outline-secondary btn-sm" (click)="changeFilter(true)">Completed</button>
+  </div>
+</div>

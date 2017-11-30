@@ -1,0 +1,19 @@
+
+.done .text {
+  text-decoration: line-through;
+  color: #888888;
+}
+.done {
+  color: #888888;
+}
+
+p {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #CCC 
+}
+
+i:hover{
+  cursor: pointer;
+}

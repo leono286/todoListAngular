@@ -1,0 +1,46 @@
+.container {
+  /* border: 2px solid #eee; */
+  box-shadow: 0px 1px 4px 0 rgba(0,0,0,0.4);
+  padding: 0;
+  font-size: 20px;
+  max-width: 600px;
+  margin: 60px auto;
+}
+
+h1 {  
+  margin: 25px 10px;
+  color: #999;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  background-color: #fafafa;
+  padding: 15px 28px;
+  box-shadow: none;
+  border: 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+.todo-list-container {
+  padding: 30px 0 0px;
+}
+
+app-todo {
+  border-bottom: 1px solid #CCC 
+}
+
+.actions {
+  padding: 10px;
+}
+.actions button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.actions button:hover  {
+  cursor: pointer
+}

@@ -1,0 +1,10 @@
+<p [class.done]="todo.completed">
+  <span class="controller" (click)="changeState()">
+    <i *ngIf="!todo.completed" class="fa fa-circle-thin" aria-hidden="true"></i>
+    <i *ngIf="todo.completed" class="fa fa-check-circle-o" aria-hidden="true"></i>
+    &nbsp;&nbsp;</span>
+  <span class="text">{{todo.text}}</span>
+  <span class="float-right">
+    <i class="fa fa-trash-o" aria-hidden="true" (click)="remove()"></i>
+  </span>
+</p>
